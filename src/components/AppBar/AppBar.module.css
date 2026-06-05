@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+}
+
+.logoWrapper {
+  display: flex;
+}
+
+.logo {
+  font-family: var(--font-family);
+
+  font-weight: 500;
+  font-size: 20px;
+
+  line-height: 24px;
+  /* line-height: 1.2; */
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.authWrapper {
+  display: flex;
+}
+
+.login {
+  font-weight: 700;
+  font-size: 16px;
+
+  line-height: 20px;
+  /* line-height: 1.25; */
+  color: #121417;
+}
+
+.registartion {
+  font-weight: 700;
+  font-size: 16px;
+
+  line-height: 20px;
+  /* line-height: 1.25; */
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+
+  background: #121417;
+}

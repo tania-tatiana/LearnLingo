@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 28px;
+}
+
+.list {
+  list-style: none;
+  text-decoration: none;
+}
+
+.link {
+  font-weight: 400;
+  font-size: 16px;
+
+  line-height: 20px;
+  /* line-height: 1.25; */
+  color: #121417;
+}
+
+.active {
+  color: red;
+}

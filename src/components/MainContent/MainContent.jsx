@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import css from "./MainContent.module.css";
 
 export default function MainContent() {
   return (
     <>
-      <div>
+      <div className={css.wrapper}>
         <div>
           <h1>Unlock your potential with the best language tutors</h1>
           <p>

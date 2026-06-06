@@ -4,11 +4,17 @@
   justify-content: flex-start;
   flex-direction: row;
   gap: 28px;
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%); */
 }
 
 .list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
-  text-decoration: none;
+  gap: 28px;
 }
 
 .link {
@@ -18,6 +24,8 @@
   line-height: 20px;
   /* line-height: 1.25; */
   color: #121417;
+
+  text-decoration: none;
 }
 
 .active {

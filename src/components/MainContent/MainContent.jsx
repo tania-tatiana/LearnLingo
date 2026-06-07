@@ -21,7 +21,6 @@ export default function MainContent() {
         </div>
         <img src="/src/assets/block.svg" alt="Lady with laptop" />
       </section>
-      <div></div>
     </>
   );
 }

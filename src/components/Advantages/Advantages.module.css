@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  border: 1.5px dashed #f4c550;
+  border-radius: 30px;
+  width: 1312px;
+  height: 116px;
+  padding: 40px 123px;
+  gap: 100px;
+}
+
+.advantagesBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quantity {
+  font-weight: 500;
+  font-size: 28px;
+
+  line-height: 32px;
+  /* line-height: 1.14286; */
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.advantage {
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+
+  line-height: 18px;
+  /* line-height: 1.28571; */
+  letter-spacing: -0.02em;
+  color: rgba(18, 20, 23, 0.7);
+
+  justify-content: flex-start;
+}

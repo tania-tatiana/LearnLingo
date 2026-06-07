@@ -4,18 +4,23 @@ import css from "./MainContent.module.css";
 export default function MainContent() {
   return (
     <>
-      <div className={css.wrapper}>
-        <div>
-          <h1>Unlock your potential with the best language tutors</h1>
-          <p>
+      <section className={css.wrapper}>
+        <div className={css.allText}>
+          <h1 className={css.title}>
+            Unlock your potential with the best{" "}
+            <span className={css.language}>language</span> tutors
+          </h1>
+          <p className={css.text}>
             Embark on an Exciting Language Journey with Expert Language Tutors:
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <Link to="/teachers">Get started</Link>
+          <Link to="/teachers" className={css.button}>
+            Get started
+          </Link>
         </div>
-        {/* <img src="" alt="" /> */}
-      </div>
+        <img src="/src/assets/block.svg" alt="Lady with laptop" />
+      </section>
       <div></div>
     </>
   );

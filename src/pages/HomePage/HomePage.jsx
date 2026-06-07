@@ -1,9 +1,11 @@
+import Advantages from "../../components/Advantages/Advantages";
 import MainContent from "../../components/MainContent/MainContent";
 
 export default function HomePage() {
   return (
     <>
       <MainContent />
+      <Advantages />
     </>
   );
 }

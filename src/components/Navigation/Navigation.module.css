@@ -29,5 +29,5 @@
 }
 
 .active {
-  color: red;
+  color: var(--color-active-nav);
 }

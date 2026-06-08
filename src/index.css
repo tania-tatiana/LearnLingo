@@ -15,6 +15,15 @@
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  --color-active-nav: #d3933b;
+  --color-login: #f4c550;
+  --color-marker: #fbe9ba;
+  --color-button: #f4c550;
+  --color-background-image: #fbe9ba;
+  --color-laptop: #d3933b;
+  --color-apple: #fbe9ba;
+  --color-frame: #f4c550;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -52,6 +61,47 @@
 
 body {
   margin: 0;
+}
+
+body.theme-green {
+  --color-active-nav: #295761;
+  --color-login: #9fbaae;
+  --color-marker: #cbded3;
+  --color-button: #9fbaae;
+  --color-background-image: #cbded3;
+  --color-laptop: #295761;
+  --color-apple: #cbded3;
+  --color-frame: #9fbaae;
+}
+body.theme-blue {
+  --color-active-nav: #20395b;
+  --color-login: #9fb7ce;
+  --color-marker: #bfd6ea;
+  --color-button: #9fb7ce;
+  --color-background-image: #bfd6ea;
+  --color-laptop: #20395b;
+  --color-apple: #bfd6ea;
+  --color-frame: #9fb7ce;
+}
+body.theme-red {
+  --color-active-nav: #b03f3e;
+  --color-login: #e0a39a;
+  --color-marker: #f2c0bd;
+  --color-button: #e0a39a;
+  --color-background-image: #f2c0bd;
+  --color-laptop: #b03f3e;
+  --color-apple: #f2c0bd;
+  --color-frame: #e0a39a;
+}
+body.theme-orange {
+  --color-active-nav: #e17650;
+  --color-login: #f0aa8d;
+  --color-marker: #f4c8ba;
+  --color-button: #f0aa8d;
+  --color-background-image: #f4c8ba;
+  --color-laptop: #e17650;
+  --color-apple: #f4c8ba;
+  --color-frame: #f0aa8d;
 }
 
 #root {

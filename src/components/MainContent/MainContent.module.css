@@ -4,6 +4,33 @@
   margin-bottom: 24px;
 }
 
+.image {
+  position: relative;
+  border-radius: 30px;
+  width: 568px;
+  height: 530px;
+}
+
+.lady {
+  position: absolute;
+  right: 115px;
+  top: 80px;
+  z-index: 1;
+  width: 339px;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.laptop {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
 .allText {
   display: flex;
   flex-direction: column;
@@ -52,7 +79,7 @@
 
   border-radius: 5%;
 
-  background: #fbe9ba;
+  background: var(--color-marker);
 
   z-index: -1;
 }
@@ -83,7 +110,7 @@
   max-width: 267px;
   /* height: 60px; */
 
-  background: #f4c550;
+  background: var(--color-button);
 
   font-weight: 700;
   font-size: 18px;
@@ -93,4 +120,6 @@
   color: #121417;
 
   text-decoration: none;
+
+  cursor: pointer;
 }

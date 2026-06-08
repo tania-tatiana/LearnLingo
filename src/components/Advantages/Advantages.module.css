@@ -6,6 +6,8 @@
   height: 116px;
   padding: 40px 123px;
   gap: 100px;
+
+  margin-bottom: 30px;
 }
 
 .advantagesBlock {
@@ -34,5 +36,5 @@
   letter-spacing: -0.02em;
   color: rgba(18, 20, 23, 0.7);
 
-  justify-content: flex-start;
+  text-align: start;
 }

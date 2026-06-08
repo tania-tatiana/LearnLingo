@@ -14,7 +14,7 @@
   height: 530px;
 
   background: #f8f8f8;
-  padding: 98px 108px 98px 64px;
+  padding: 98px 100px 98px 64px;
 }
 
 .title {
@@ -28,11 +28,33 @@
 
   margin: 0px 0px 32px;
   justify-content: left;
+
+  max-width: 100%;
 }
 
 .language {
   font-style: italic;
   font-weight: 400;
+
+  position: relative;
+  z-index: 1;
+}
+
+.language::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+
+  width: 100%;
+  height: 40px;
+
+  border-radius: 5%;
+
+  background: #fbe9ba;
+
+  z-index: -1;
 }
 
 .text {
@@ -45,6 +67,8 @@
   color: #121417;
 
   margin-bottom: 64px;
+
+  max-width: 471px;
 }
 
 .button {

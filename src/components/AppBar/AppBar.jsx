@@ -8,7 +8,7 @@ import { ThemeContext } from "../ThemesContext/ThemesContext";
 
 export default function AppBar() {
   const [isThemesBarOpen, setIsThemesBarOpen] = useState(false);
-  const { changeTheme } = useContext(ThemeContext);
+  const { theme, changeTheme } = useContext(ThemeContext);
 
   const handleClick = () => {
     setIsThemesBarOpen(!isThemesBarOpen);
@@ -75,54 +75,75 @@ export default function AppBar() {
         </NavLink>
         <div onClick={handleClick} className={css.themeWrapper}>
           {isThemesBarOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-          {isThemesBarOpen && (
-            <div className={css.dropdown}>
-              <button
-                className={css.listButton}
-                onClick={() => {
-                  changeTheme("theme-yellow");
-                }}
-              >
-                Yellow theme
-              </button>
-              <button
-                className={css.listButton}
-                className={css.listButton}
-                onClick={() => {
-                  changeTheme("theme-green");
-                }}
-              >
-                Green theme
-              </button>
-              <button
-                className={css.listButton}
-                className={css.listButton}
-                onClick={() => {
-                  changeTheme("theme-blue");
-                }}
-              >
-                Blue theme
-              </button>
-              <button
-                className={css.listButton}
-                className={css.listButton}
-                onClick={() => {
-                  changeTheme("theme-red");
-                }}
-              >
-                Red theme
-              </button>
-              <button
-                className={css.listButton}
-                className={css.listButton}
-                onClick={() => {
-                  changeTheme("theme-orange");
-                }}
-              >
-                Orange theme
-              </button>
-            </div>
-          )}
+          <div
+            className={`${css.dropdown} & ${isThemesBarOpen ? css.open : ""}`}
+          >
+            <button
+              className={
+                theme === "theme-yellow"
+                  ? `${css.listButton} ${css.active}`
+                  : css.listButton
+              }
+              onClick={() => {
+                changeTheme("theme-yellow");
+                setIsThemesBarOpen(false);
+              }}
+            >
+              Yellow theme
+            </button>
+            <button
+              className={
+                theme === "theme-green"
+                  ? `${css.listButton} ${css.active}`
+                  : css.listButton
+              }
+              onClick={() => {
+                changeTheme("theme-green");
+                setIsThemesBarOpen(false);
+              }}
+            >
+              Green theme
+            </button>
+            <button
+              className={
+                theme === "theme-blue"
+                  ? `${css.listButton} ${css.active}`
+                  : css.listButton
+              }
+              onClick={() => {
+                changeTheme("theme-blue");
+                setIsThemesBarOpen(false);
+              }}
+            >
+              Blue theme
+            </button>
+            <button
+              className={
+                theme === "theme-red"
+                  ? `${css.listButton} ${css.active}`
+                  : css.listButton
+              }
+              onClick={() => {
+                changeTheme("theme-red");
+                setIsThemesBarOpen(false);
+              }}
+            >
+              Red theme
+            </button>
+            <button
+              className={
+                theme === "theme-orange"
+                  ? `${css.listButton} ${css.active}`
+                  : css.listButton
+              }
+              onClick={() => {
+                changeTheme("theme-orange");
+                setIsThemesBarOpen(false);
+              }}
+            >
+              Orange theme
+            </button>
+          </div>
         </div>
       </div>
     </header>

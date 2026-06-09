@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { ThemeContext } from "../ThemesContext/ThemesContext";
 
 export default function ThemesProvider({ children }) {
-  const [theme, setTheme] = useState("yellow");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
   useEffect(() => {
     document.body.className = theme;
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

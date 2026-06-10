@@ -1,0 +1,410 @@
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 48px;
+
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1184px;
+
+  background: #fff;
+}
+
+.teacherIcon {
+  display: flex;
+  border: 3px solid var(--color-marker);
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.icon {
+  border-radius: 100px;
+  width: 96px;
+  height: 96px;
+  display: block;
+}
+
+.online {
+  position: absolute;
+  top: 19px;
+  right: 19px;
+  display: block;
+}
+
+.allText {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 32px;
+
+  width: 100%;
+  max-width: 968px;
+}
+
+.firstLine {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+
+  width: 100%;
+  max-width: 968px;
+}
+
+.mainInfo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+
+  height: 56px;
+}
+
+.languages {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #8a8a89;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 24px;
+
+  line-height: 24px;
+  /* line-height: 1; */
+  color: #121417;
+  margin: 0;
+}
+
+.detailsAndFavorite {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 32px;
+
+  width: 100%;
+  max-width: 697px;
+}
+
+.lessons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #121417;
+
+  width: 100%;
+  max-width: 132px;
+}
+
+.book {
+  margin-top: 4px;
+}
+
+.quantity {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #121417;
+  width: 100%;
+  /* max-width: 145px; */
+  white-space: nowrap;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #121417;
+  /* max-width: 101px; */
+  white-space: nowrap;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #121417;
+  /* width: 100%; */
+  white-space: nowrap;
+}
+
+.priceGreen {
+  color: #38cd3e;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.descBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: start;
+}
+
+.desc {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.speaks {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #8a8a89;
+}
+
+.speaksSpan {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+}
+
+.info {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #8a8a89;
+}
+
+.infoSpan {
+  color: #121417;
+}
+
+.conditions {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #8a8a89;
+}
+
+.conditionsSpan {
+  color: #121417;
+}
+
+.button {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+}
+
+.extendedDesc {
+  font-weight: 400;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #121417;
+
+  text-align: start;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  gap: 32px;
+}
+
+.reviewCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 16px;
+  text-align: start;
+
+  width: 100%;
+  height: 84px;
+}
+
+.reviewerFirstLine {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 12px;
+
+  width: 100%;
+  max-width: 100px;
+  height: 44px;
+}
+
+.reviewerIcon {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  background: var(--color-marker);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 600;
+}
+
+.reviewerName {
+  font-weight: 500;
+  font-size: 16px;
+
+  line-height: 24px;
+  /* line-height: 1.5; */
+  color: #8a8a89;
+}
+
+.reviewerRating {
+  font-weight: 500;
+  font-size: 14px;
+
+  line-height: 18px;
+  /* line-height: 1.28571; */
+  color: #121417;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.comment {
+  color: #121417;
+}
+
+.englishLevels {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 8px;
+
+  height: 32px;
+}
+
+.englishLevelActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+
+  border-radius: 35px;
+  padding: 8px 12px;
+  height: 32px;
+
+  background: var(--color-button);
+
+  font-weight: 500;
+  font-size: 14px;
+
+  line-height: 16px;
+  /* line-height: 1.14286; */
+  color: #121417;
+}
+
+.englishLevel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  height: 32px;
+
+  font-weight: 500;
+  font-size: 14px;
+
+  line-height: 16px;
+  /* line-height: 1.14286; */
+  color: #121417;
+}
+
+.bookingButton {
+  font-weight: 700;
+  font-size: 18px;
+
+  line-height: 28px;
+  /* line-height: 1.55556; */
+  color: #121417;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0px;
+
+  border-radius: 12px;
+  padding: 16px 48px;
+  height: 60px;
+
+  background: var(--color-button);
+
+  border: none;
+
+  cursor: pointer;
+}

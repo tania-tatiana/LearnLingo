@@ -1,4 +1,4 @@
-import Filter from "../../components/Filter/Filte";
+import Filter from "../../components/Filter/Filter";
 import TeachersList from "../../components/TeachersList/TeachersList";
 
 export default function TeachersPage() {

@@ -247,6 +247,8 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #121417;
+
+  cursor: pointer;
 }
 
 .extendedDesc {

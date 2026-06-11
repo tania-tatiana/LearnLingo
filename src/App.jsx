@@ -5,8 +5,21 @@ import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import TeachersPage from "./pages/TeachersPage/TeachersPage";
 import FavoritePage from "./pages/FavoritesPage/FavoritesPage";
+// import { useEffect } from "react";
+// import { importTeachers } from "./utils/importTeachers";
+// import { fetchTeachers } from "./services/teacherAPI";
 
 function App() {
+  // useEffect(() => {
+  //   async function init() {
+  //     const teachers = await fetchTeachers();
+  //     if (teachers.length === 0) {
+  //       await importTeachers();
+  //     }
+  //   }
+
+  //   init();
+  // }, []);
   return (
     <>
       <AppBar />

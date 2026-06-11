@@ -5,10 +5,7 @@ export default function TeachersList({ teachers }) {
   return (
     <ul className={css.list}>
       {teachers.map((teacher) => (
-        <TeacherCard
-          key={`${teacher.name}-${teacher.surname}`}
-          teacher={teacher}
-        />
+        <TeacherCard key={teacher.id} teacher={teacher} />
       ))}
     </ul>
   );

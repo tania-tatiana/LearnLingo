@@ -1,8 +1,10 @@
 import { useState } from "react";
 import css from "./TeacherCard.module.css";
+import BookingForm from "../BookingForm/BookingForm";
 
 export default function TeacherCard({ teacher }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   return (
     <li className={css.item}>
       <div className={css.card}>
@@ -186,7 +188,25 @@ export default function TeacherCard({ teacher }) {
             ))}
           </div>
           {isOpen && (
-            <button className={css.bookingButton}>Book trial lesson</button>
+            <button
+              className={css.bookingButton}
+              onClick={() => setShowForm(true)}
+            >
+              Book trial lesson
+            </button>
+          )}
+          {showForm && (
+            <div className={css.overlay} onClick={() => setShowForm(false)}>
+              <div
+                className={css.modal}
+                onClick={(event) => event.stopPropagation()}
+              >
+                <BookingForm
+                  teacher={teacher}
+                  onClose={() => setShowForm(false)}
+                />
+              </div>
+            </div>
           )}
         </div>
       </div>

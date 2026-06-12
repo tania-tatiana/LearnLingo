@@ -431,6 +431,7 @@
   position: relative;
 
   padding: 64px;
+  padding-right: 64px;
   border-radius: 30px;
   width: 100%;
   max-width: 599px;
@@ -440,4 +441,17 @@
 
   max-height: 90vh;
   overflow-y: auto;
+}
+
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: var(--color-button);
+  border-radius: 8px;
 }

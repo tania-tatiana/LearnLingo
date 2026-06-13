@@ -4,7 +4,17 @@ import BookingForm from "../BookingForm/BookingForm";
 
 export default function TeacherCard({ teacher }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [showForm, setShowForm] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+
+    setTimeout(() => {
+      setIsClosing(false);
+      setShowForm(false);
+    }, 300);
+  };
   return (
     <li className={css.item}>
       <div className={css.card}>
@@ -196,15 +206,15 @@ export default function TeacherCard({ teacher }) {
             </button>
           )}
           {showForm && (
-            <div className={css.overlay} onClick={() => setShowForm(false)}>
+            <div
+              className={`${css.overlay} ${isClosing ? css.overlayClosing : ""}`}
+              onClick={handleClose}
+            >
               <div
-                className={css.modal}
+                className={`${css.modal} ${isClosing ? css.modalClosing : ""}`}
                 onClick={(event) => event.stopPropagation()}
               >
-                <BookingForm
-                  teacher={teacher}
-                  onClose={() => setShowForm(false)}
-                />
+                <BookingForm teacher={teacher} onClose={handleClose} />
               </div>
             </div>
           )}

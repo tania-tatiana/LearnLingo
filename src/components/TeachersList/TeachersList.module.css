@@ -7,3 +7,23 @@
   padding: 0;
   margin: 0;
 }
+
+.btnLoadMore {
+  margin: 50px auto;
+  display: block;
+
+  padding: 12px 24px;
+  border-radius: 12px;
+
+  background: var(--color-button);
+  border: none;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.loadMoreBtn:hover {
+  transform: scale(1.03);
+}

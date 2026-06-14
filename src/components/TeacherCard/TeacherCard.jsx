@@ -207,11 +207,11 @@ export default function TeacherCard({ teacher }) {
           )}
           {showForm && (
             <div
-              className={`${css.overlay} ${isClosing ? css.overlayClosing : ""}`}
+              className={`${css.overlay} ${isClosing ? css.overlayClosing : css.overlayOpen}`}
               onClick={handleClose}
             >
               <div
-                className={`${css.modal} ${isClosing ? css.modalClosing : ""}`}
+                className={`${css.modal} ${isClosing ? css.modalClosing : css.modalOpen}`}
                 onClick={(event) => event.stopPropagation()}
               >
                 <BookingForm teacher={teacher} onClose={handleClose} />

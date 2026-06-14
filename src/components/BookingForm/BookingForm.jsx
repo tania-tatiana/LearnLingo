@@ -1,13 +1,25 @@
-import { Field, Form, Formik } from "formik";
 import css from "./BookingForm.module.css";
 import { useEffect } from "react";
+import * as yup from "yup";
+import "yup-phone-lite";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+  reason: yup.string().required("Please select a reason"),
+  username: yup
+    .string()
+    .required("Name is required")
+    .min(2, "Too short!")
+    .max(50, "To long!"),
+  email: yup.string().required("Email is required").email("Invalid email"),
+  phone: yup
+    .string()
+    .required("Phone is required")
+    .phone("UK", "Please enter a valid phone number"),
+});
 
 export default function BookingForm({ teacher, onClose }) {
-  const handleSubmit = (values, helpers) => {
-    console.log(values);
-    helpers.resetForm();
-  };
-  console.log(handleSubmit);
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === "Escape") {
@@ -23,12 +35,35 @@ export default function BookingForm({ teacher, onClose }) {
   }, [onClose]);
 
   useEffect(() => {
+    const original = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = original;
     };
   }, []);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      reason: "Career and business",
+      username: "",
+      email: "",
+      phone: "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+    onClose();
+  };
 
   return (
     <div>
@@ -60,89 +95,74 @@ export default function BookingForm({ teacher, onClose }) {
       <h2 className={css.titleOfFrom}>
         What is your main reason for learning English?
       </h2>
-      <Formik
-        initialValues={{
-          reason: "Career and business",
-          username: "",
-          email: "",
-          phone: "",
-        }}
-        onSubmit={() => {}}
-      >
-        <Form>
-          <div className={css.radioGroup}>
-            <label htmlFor="reasonCareer">
-              <Field
-                id="reasonCareer"
-                type="radio"
-                name="reason"
-                value="Career and business"
-              />
-              Career and business
-            </label>
-            <label htmlFor="reasonKids">
-              <Field
-                id="reasonKids"
-                type="radio"
-                name="reason"
-                value="Lesson for kids"
-              />
-              Lesson for kids
-            </label>
-            <label htmlFor="reasonAbroad">
-              <Field
-                id="reasonAbroad"
-                type="radio"
-                name="reason"
-                value="Living abroad"
-              />
-              Living abroad
-            </label>
-            <label htmlFor="reasonExams">
-              <Field
-                id="reasonExams"
-                type="radio"
-                name="reason"
-                value="Exams and coursework"
-              />
-              Exams and coursework
-            </label>
-            <label htmlFor="reasonCulture">
-              <Field
-                id="reasonCulture"
-                type="radio"
-                name="reason"
-                value="Culture, travel or hobby"
-              />
-              Culture, travel or hobby
-            </label>
-          </div>
-          <div className={css.inputs}>
-            <Field
-              type="text"
-              name="username"
-              placeholder="Full Name"
-              className={css.input}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={css.radioGroup}>
+          <label htmlFor="reasonCareer">
+            <input
+              type="radio"
+              value="Career and business"
+              {...register("reason")}
             />
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={css.input}
+            Career and business
+          </label>
+          <label htmlFor="reasonKids">
+            <input
+              type="radio"
+              value="Lesson for kids"
+              {...register("reason")}
             />
-            <Field
-              type="phone"
-              name="phone"
-              placeholder="Phone number"
-              className={css.input}
+            Lesson for kids
+          </label>
+          <label htmlFor="reasonAbroad">
+            <input type="radio" value="Living abroad" {...register("reason")} />
+            Living abroad
+          </label>
+          <label htmlFor="reasonExams">
+            <input
+              type="radio"
+              value="Exams and coursework"
+              {...register("reason")}
             />
-          </div>
+            Exams and coursework
+          </label>
+          <label htmlFor="reasonCulture">
+            <input
+              type="radio"
+              value="Culture, travel or hobby"
+              {...register("reason")}
+            />
+            Culture, travel or hobby
+          </label>
+          {errors.reason && <p>{errors.reason.message}</p>}
+        </div>
+        <div className={css.inputs}>
+          <input
+            type="text"
+            placeholder="Full Name"
+            {...register("username")}
+            className={css.input}
+          />
+          {errors.username && <p>{errors.username.message}</p>}
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+            className={css.input}
+          />
+          {errors.email && <p>{errors.email.message}</p>}
+          <input
+            type="tel"
+            placeholder="Phone number"
+            {...register("phone")}
+            className={css.input}
+          />
+          {errors.phone && <p>{errors.phone.message}</p>}
+        </div>
 
-          <button type="submit" className={css.button}>
-            Book
-          </button>
-        </Form>
-      </Formik>
+        <button type="submit" className={css.button}>
+          Book
+        </button>
+      </form>
     </div>
   );
 }

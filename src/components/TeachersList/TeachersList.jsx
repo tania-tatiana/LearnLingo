@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import TeacherCard from "../TeacherCard/TeacherCard";
 import css from "./TeachersList.module.css";
 
-export default function TeachersList({ teachers }) {
-  const [visibleCount, setVisibleCount] = useState(4);
+export default function TeachersList({ teachers = [] }) {
+  const [visibleCount, setVisibleCount] = useState(() => 4);
 
-  const visibleTeachers = teachers.slice(0, visibleCount);
+  const visibleTeachers = useMemo(() => {
+    return teachers.slice(0, visibleCount);
+  }, [teachers, visibleCount]);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 4);
@@ -17,7 +19,7 @@ export default function TeachersList({ teachers }) {
           <TeacherCard key={teacher.id} teacher={teacher} />
         ))}
       </ul>
-      {visibleCount < teachers.length && (
+      {teachers.length > 0 && visibleCount < teachers.length && (
         <button className={css.btnLoadMore} onClick={handleLoadMore}>
           Load More
         </button>

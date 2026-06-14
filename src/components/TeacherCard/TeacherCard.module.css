@@ -426,14 +426,18 @@
 
   z-index: 1000;
 
-  opacity: 1;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .overlayOpen {
+  opacity: 1;
   animation: fadeIn 300ms ease forwards;
+  pointer-events: auto;
 }
 
 .overlayClosing {
+  opacity: 0;
   animation: fadeOut 300ms ease forwards;
   pointer-events: none;
 }

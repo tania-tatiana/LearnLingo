@@ -47,7 +47,7 @@ export default function BookingForm({ teacher, onClose }) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, touchedFields, dirtyFields },
     reset,
   } = useForm({
     resolver: yupResolver(schema),
@@ -96,7 +96,9 @@ export default function BookingForm({ teacher, onClose }) {
         What is your main reason for learning English?
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={css.radioGroup}>
+        <div
+          className={`${css.radioGroup} ${errors.reason ? css.errorRadio : ""}`}
+        >
           <label htmlFor="reasonCareer">
             <input
               type="radio"
@@ -133,30 +135,38 @@ export default function BookingForm({ teacher, onClose }) {
             />
             Culture, travel or hobby
           </label>
-          {errors.reason && <p>{errors.reason.message}</p>}
+          {errors.reason && (
+            <p className={css.errorText}>{errors.reason.message}</p>
+          )}
         </div>
         <div className={css.inputs}>
           <input
             type="text"
             placeholder="Full Name"
             {...register("username")}
-            className={css.input}
+            className={`${css.input} ${errors.username ? css.errorInput : ""} ${!errors.username && touchedFields.username ? css.successInput : ""}`}
           />
-          {errors.username && <p>{errors.username.message}</p>}
+          {errors.username && (
+            <p className={css.errorText}>{errors.username.message}</p>
+          )}
           <input
             type="email"
             placeholder="Email"
             {...register("email")}
-            className={css.input}
+            className={`${css.input} ${errors.email ? css.errorInput : ""} ${!errors.email && dirtyFields.email ? css.successInput : ""}`}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && (
+            <p className={css.errorText}>{errors.email.message}</p>
+          )}
           <input
             type="tel"
             placeholder="Phone number"
             {...register("phone")}
-            className={css.input}
+            className={`${css.input} ${errors.phone ? css.errorInput : ""} ${!errors.phone && touchedFields.phone ? css.successInput : ""}`}
           />
-          {errors.phone && <p>{errors.phone.message}</p>}
+          {errors.phone && (
+            <p className={css.errorText}>{errors.phone.message}</p>
+          )}
         </div>
 
         <button type="submit" className={css.button}>

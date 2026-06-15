@@ -9,6 +9,9 @@
 }
 
 .btnLoadMore {
+  position: relative;
+  z-index: 10;
+
   margin: 50px auto;
   display: block;
 

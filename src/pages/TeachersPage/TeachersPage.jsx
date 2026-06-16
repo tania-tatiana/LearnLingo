@@ -7,9 +7,9 @@ import css from "./TeachersPage.module.css";
 export default function TeachersPage() {
   const [teachers, setTeachers] = useState([]);
   const [filters, setFilters] = useState({
-    language: "All",
-    level: "All",
-    price: "All",
+    language: null,
+    level: null,
+    price: null,
   });
 
   useEffect(() => {
@@ -27,15 +27,13 @@ export default function TeachersPage() {
   const filteredTeachers = useMemo(() => {
     return teachers.filter((teacher) => {
       const matchLanguage =
-        filters.language === "All" ||
-        teacher.languages.includes(filters.language);
+        !filters.language || teacher.languages.includes(filters.language);
 
       const matchLevel =
-        filters.level === "All" || teacher.levels.includes(filters.level);
+        !filters.level || teacher.levels.includes(filters.level);
 
       const matchPrice =
-        filters.price === "All" ||
-        teacher.price_per_hour <= Number(filters.price);
+        !filters.price || teacher.price_per_hour <= Number(filters.price);
 
       return matchLanguage && matchLevel && matchPrice;
     });

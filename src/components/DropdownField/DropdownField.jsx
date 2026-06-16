@@ -16,22 +16,20 @@ export default function DropdownField({
         <div onClick={onToggle} className={css.select}>
           {value || label}
         </div>
-        {isOpen && (
-          <ul className={`${css.dropdown} ${isOpen ? css.open : ""}`}>
-            {options.map((option) => (
-              <li
-                className={`${css.item} ${value === option.value ? css.active : ""}`}
-                key={option.value}
-                onClick={() => {
-                  onChange(option.value);
-                  onToggle();
-                }}
-              >
-                {option.label}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className={`${css.dropdown} ${isOpen ? css.open : ""}`}>
+          {options.map((option) => (
+            <li
+              className={`${css.item} ${value === option.value ? css.active : ""}`}
+              key={option.value}
+              onClick={() => {
+                onChange(option.value);
+                onToggle();
+              }}
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
         <IoIosArrowDown className={css.arrow} />
       </div>
     </div>

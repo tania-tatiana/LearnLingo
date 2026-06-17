@@ -127,3 +127,8 @@
 .button:hover {
   background: var(--color-marker);
 }
+
+.button:active {
+  background: var(--color-marker);
+  transform: scale(0.98);
+}

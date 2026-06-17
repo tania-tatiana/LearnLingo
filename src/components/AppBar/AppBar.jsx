@@ -6,7 +6,7 @@ import css from "./AppBar.module.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../ThemesContext/ThemesContext";
 
-export default function AppBar() {
+export default function AppBar({ setIsRegisterOrLoginOpen }) {
   const [isThemesBarOpen, setIsThemesBarOpen] = useState(false);
   const { theme, changeTheme } = useContext(ThemeContext);
 
@@ -67,12 +67,18 @@ export default function AppBar() {
             strokeLinejoin="round"
           />
         </svg>
-        <NavLink to="/login" className={css.login}>
+        <button
+          className={css.login}
+          onClick={() => setIsRegisterOrLoginOpen("login")}
+        >
           Log in
-        </NavLink>
-        <NavLink to="/registration" className={css.registration}>
+        </button>
+        <button
+          className={css.registration}
+          onClick={() => setIsRegisterOrLoginOpen("register")}
+        >
           Registration
-        </NavLink>
+        </button>
         <div onClick={handleClick} className={css.themeWrapper}>
           {isThemesBarOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
           <div

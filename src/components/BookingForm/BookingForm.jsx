@@ -12,7 +12,7 @@ const schema = yup.object().shape({
     .required("Name is required")
     .min(2, "Too short!")
     .max(50, "To long!"),
-  email: yup.string().required("Email is required").email("Invalid email"),
+  email: yup.string().email("Invalid email").required("Email is required"),
   phone: yup
     .string()
     .required("Phone is required")
@@ -33,16 +33,6 @@ export default function BookingForm({ teacher, onClose }) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
-
-  useEffect(() => {
-    const original = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = original;
-    };
-  }, []);
 
   const {
     register,

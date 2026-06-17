@@ -428,17 +428,17 @@
 
   opacity: 0;
   pointer-events: none;
+
+  transition: opacity 300ms ease;
 }
 
 .overlayOpen {
   opacity: 1;
-  animation: fadeIn 300ms ease forwards;
   pointer-events: auto;
 }
 
 .overlayClosing {
   opacity: 0;
-  animation: fadeOut 300ms ease forwards;
   pointer-events: none;
 }
 
@@ -457,16 +457,21 @@
   max-height: 90vh;
   overflow-y: auto;
 
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0;
+  transform: translateY(40px);
+
+  transition:
+    transform 300ms ease,
+    opacity 300ms ease;
 }
 
 .modalOpen {
-  transform: translateY(40px);
-  animation: modalIn 300ms ease forwards;
+  transform: translateY(0);
+  opacity: 1;
 }
 .modalClosing {
-  animation: modalOut 300ms ease forwards;
+  transform: translateY(40px);
+  opacity: 0;
 }
 
 .modal::-webkit-scrollbar {
@@ -480,30 +485,4 @@
 .modal::-webkit-scrollbar-thumb {
   background: var(--color-button);
   border-radius: 8px;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes modalIn {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes modalOut {
-  to {
-    transform: translateY(40px);
-    opacity: 0;
-  }
 }

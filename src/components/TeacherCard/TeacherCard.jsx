@@ -11,9 +11,15 @@ export default function TeacherCard({ teacher }) {
     setIsClosing(true);
 
     setTimeout(() => {
-      setIsClosing(false);
       setShowForm(false);
+      setIsClosing(false);
+      document.body.style.overflow = "unset";
     }, 300);
+  };
+
+  const handleOpen = () => {
+    setShowForm(true);
+    document.body.style.overflow = "hidden";
   };
   return (
     <li className={css.item}>
@@ -198,26 +204,23 @@ export default function TeacherCard({ teacher }) {
             ))}
           </div>
           {isOpen && (
-            <button
-              className={css.bookingButton}
-              onClick={() => setShowForm(true)}
-            >
+            <button className={css.bookingButton} onClick={handleOpen}>
               Book trial lesson
             </button>
           )}
-          {showForm && (
+          {
             <div
-              className={`${css.overlay} ${isClosing ? css.overlayClosing : css.overlayOpen}`}
+              className={`${css.overlay} ${showForm && !isClosing ? css.overlayOpen : css.overlayClosing}`}
               onClick={handleClose}
             >
               <div
-                className={`${css.modal} ${isClosing ? css.modalClosing : css.modalOpen}`}
+                className={`${css.modal} ${showForm && !isClosing ? css.modalOpen : css.modalClosing}`}
                 onClick={(event) => event.stopPropagation()}
               >
                 <BookingForm teacher={teacher} onClose={handleClose} />
               </div>
             </div>
-          )}
+          }
         </div>
       </div>
     </li>

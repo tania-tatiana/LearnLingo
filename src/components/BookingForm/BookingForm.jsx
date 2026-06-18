@@ -91,6 +91,7 @@ export default function BookingForm({ teacher, onClose }) {
         >
           <label htmlFor="reasonCareer">
             <input
+              id="reasonCareer"
               type="radio"
               value="Career and business"
               {...register("reason")}
@@ -99,6 +100,7 @@ export default function BookingForm({ teacher, onClose }) {
           </label>
           <label htmlFor="reasonKids">
             <input
+              id="reasonKids"
               type="radio"
               value="Lesson for kids"
               {...register("reason")}
@@ -106,11 +108,17 @@ export default function BookingForm({ teacher, onClose }) {
             Lesson for kids
           </label>
           <label htmlFor="reasonAbroad">
-            <input type="radio" value="Living abroad" {...register("reason")} />
+            <input
+              id="reasonAbroad"
+              type="radio"
+              value="Living abroad"
+              {...register("reason")}
+            />
             Living abroad
           </label>
           <label htmlFor="reasonExams">
             <input
+              id="reasonExams"
               type="radio"
               value="Exams and coursework"
               {...register("reason")}
@@ -119,6 +127,7 @@ export default function BookingForm({ teacher, onClose }) {
           </label>
           <label htmlFor="reasonCulture">
             <input
+              id="reasonCulture"
               type="radio"
               value="Culture, travel or hobby"
               {...register("reason")}

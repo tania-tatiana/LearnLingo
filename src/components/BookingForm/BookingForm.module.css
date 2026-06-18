@@ -124,7 +124,29 @@
 }
 
 input[type="radio"] {
-  accent-color: var(--color-button);
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  border-color: var(--color-button);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--color-button);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .radioGroup label {
@@ -133,6 +155,7 @@ input[type="radio"] {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .errorText {
@@ -229,4 +252,13 @@ input[type="radio"] {
 
   cursor: pointer;
   border: none;
+}
+
+.button:hover {
+  background: var(--color-marker);
+}
+
+.button:active {
+  background: var(--color-marker);
+  transform: scale(0.98);
 }

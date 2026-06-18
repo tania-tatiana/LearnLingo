@@ -49,14 +49,14 @@ export default function Registration({
             validationSchema={schema}
             onSubmit={onSubmit}
           >
-            {({ errors, touched }) => (
+            {({ errors, touched, values }) => (
               <Form>
                 <div className={css.fields}>
                   <div className={css.fieldWrapper}>
                     <Field
                       name="name"
                       placeholder="Name"
-                      className={`${css.field} ${touched.name && errors.name ? css.error : ""} ${touched.name && !errors.name ? css.success : ""}`}
+                      className={`${css.field} ${touched.name && errors.name ? css.error : ""} ${touched.name && !errors.name && values.name ? css.success : ""}`}
                     ></Field>
                     <ErrorMessage
                       name="name"
@@ -68,7 +68,7 @@ export default function Registration({
                     <Field
                       name="email"
                       placeholder="Email"
-                      className={`${css.field} ${touched.email && errors.email ? css.error : ""} ${touched.email && !errors.email ? css.success : ""}`}
+                      className={`${css.field} ${touched.email && errors.email ? css.error : ""} ${touched.email && !errors.email && values.email ? css.success : ""}`}
                     ></Field>
                     <ErrorMessage
                       name="email"
@@ -81,7 +81,7 @@ export default function Registration({
                       name="password"
                       type="password"
                       placeholder="Password"
-                      className={`${css.field} ${touched.password && errors.password ? css.error : ""} ${touched.password && !errors.password ? css.success : ""}`}
+                      className={`${css.field} ${touched.password && errors.password ? css.error : ""} ${touched.password && !errors.password && values.password ? css.success : ""}`}
                     ></Field>
                     <ErrorMessage
                       name="password"

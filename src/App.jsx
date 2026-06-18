@@ -8,6 +8,7 @@ import FavoritePage from "./pages/FavoritesPage/FavoritesPage";
 import { useCallback, useEffect, useState } from "react";
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import { useEffect } from "react";
 // import { importTeachers } from "./utils/importTeachers";
 // import { fetchTeachers } from "./services/teacherAPI";
@@ -73,7 +74,14 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/teachers" element={<TeachersPage />} />
-        <Route path="/favorites" element={<FavoritePage />} />
+        <Route
+          path="/favorites"
+          element={
+            <ProtectedRoute>
+              <FavoritePage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Login

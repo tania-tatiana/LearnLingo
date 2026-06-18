@@ -29,7 +29,6 @@ export default function Login({ isClosing, isRegisterOrLoginOpen, onClose }) {
     handleSubmit,
     formState: { errors, touchedFields },
     reset,
-    watch,
   } = useForm({ resolver: yupResolver(schema), mode: "onTouched" });
 
   const onSubmit = async (data) => {
@@ -90,7 +89,7 @@ export default function Login({ isClosing, isRegisterOrLoginOpen, onClose }) {
                     {...register("password")}
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
-                    className={`${css.field} ${touchedFields.password && errors.password && watch("password") ? css.error : ""} ${touchedFields.password && !errors.password ? css.success : ""}`}
+                    className={`${css.field} ${touchedFields.password && errors.password ? css.error : ""} ${touchedFields.password && !errors.password ? css.success : ""}`}
                   ></input>
                   <button
                     type="button"

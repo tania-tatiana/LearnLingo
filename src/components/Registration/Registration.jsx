@@ -36,7 +36,6 @@ export default function Registration({
     handleSubmit,
     formState: { errors, touchedFields },
     reset,
-    watch,
   } = useForm({ resolver: yupResolver(schema), mode: "onChange" });
 
   const onSubmit = async (data) => {
@@ -111,7 +110,7 @@ export default function Registration({
                     {...register("password")}
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
-                    className={`${css.field} ${touchedFields.password && errors.password && watch("password") ? css.error : ""} ${touchedFields.password && !errors.password ? css.success : ""}`}
+                    className={`${css.field} ${touchedFields.password && errors.password ? css.error : ""} ${touchedFields.password && !errors.password ? css.success : ""}`}
                   ></input>
                   <button
                     type="button"

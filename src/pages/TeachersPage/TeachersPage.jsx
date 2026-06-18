@@ -4,7 +4,12 @@ import TeachersList from "../../components/TeachersList/TeachersList";
 import { fetchTeachers } from "../../services/teacherAPI";
 import css from "./TeachersPage.module.css";
 
-export default function TeachersPage() {
+export default function TeachersPage({
+  user,
+  favorites,
+  toggleFavorite,
+  isFavorite,
+}) {
   const [teachers, setTeachers] = useState([]);
   const [filters, setFilters] = useState({
     language: null,
@@ -41,7 +46,13 @@ export default function TeachersPage() {
   return (
     <div className={css.page}>
       <Filter filters={filters} setFilters={setFilters} />
-      <TeachersList teachers={filteredTeachers} />
+      <TeachersList
+        user={user}
+        teachers={filteredTeachers}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
+        isFavorite={isFavorite}
+      />
     </div>
   );
 }

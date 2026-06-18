@@ -27,6 +27,6 @@
   transition: 0.2s ease;
 }
 
-.loadMoreBtn:hover {
+.btnLoadMore:hover {
   transform: scale(1.03);
 }

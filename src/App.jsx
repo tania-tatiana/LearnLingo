@@ -5,10 +5,11 @@ import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import TeachersPage from "./pages/TeachersPage/TeachersPage";
 import FavoritePage from "./pages/FavoritesPage/FavoritesPage";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import { AuthContext } from "./components/AuthContext/AuthContext";
 // import { useEffect } from "react";
 // import { importTeachers } from "./utils/importTeachers";
 // import { fetchTeachers } from "./services/teacherAPI";
@@ -16,6 +17,32 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 function App() {
   const [isRegisterOrLoginOpen, setIsRegisterOrLoginOpen] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
+  const [favorites, setFavorites] = useState(() => {
+    const stored = localStorage.getItem("favorites");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorite = (teacher) => {
+    setFavorites((prev) => {
+      const isExist = prev.some((item) => item.id === teacher.id);
+
+      if (isExist) {
+        return prev.filter((item) => item.id !== teacher.id);
+      } else {
+        return [...prev, teacher];
+      }
+    });
+  };
+
+  const isFavorite = (id) => {
+    return favorites.some((item) => item.id === id);
+  };
   // useEffect(() => {
   //   async function init() {
   //     const teachers = await fetchTeachers();
@@ -73,12 +100,26 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/teachers" element={<TeachersPage />} />
+        <Route
+          path="/teachers"
+          element={
+            <TeachersPage
+              user={user}
+              favorites={favorites}
+              toggleFavorite={toggleFavorite}
+              isFavorite={isFavorite}
+            />
+          }
+        />
         <Route
           path="/favorites"
           element={
             <ProtectedRoute>
-              <FavoritePage />
+              <FavoritePage
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+                isFavorite={isFavorite}
+              />
             </ProtectedRoute>
           }
         />

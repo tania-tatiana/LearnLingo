@@ -2,7 +2,13 @@ import { useMemo, useState } from "react";
 import TeacherCard from "../TeacherCard/TeacherCard";
 import css from "./TeachersList.module.css";
 
-export default function TeachersList({ teachers = [] }) {
+export default function TeachersList({
+  user,
+  teachers = [],
+  favorites,
+  toggleFavorite,
+  isFavorite,
+}) {
   const [visibleCount, setVisibleCount] = useState(() => 4);
 
   const visibleTeachers = useMemo(() => {
@@ -16,7 +22,14 @@ export default function TeachersList({ teachers = [] }) {
     <>
       <ul className={css.list}>
         {visibleTeachers.map((teacher) => (
-          <TeacherCard key={teacher.id} teacher={teacher} />
+          <TeacherCard
+            user={user}
+            key={teacher.id}
+            teacher={teacher}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+            isFavorite={isFavorite}
+          />
         ))}
       </ul>
       {teachers.length > 0 && visibleCount < teachers.length && (

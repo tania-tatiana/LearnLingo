@@ -3,7 +3,6 @@ import css from "./TeacherCard.module.css";
 import BookingForm from "../BookingForm/BookingForm";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
-import toast, { Toaster } from "react-hot-toast";
 
 export default function TeacherCard({
   user,
@@ -16,10 +15,6 @@ export default function TeacherCard({
   const [showForm, setShowForm] = useState(false);
 
   const handleClickFavorite = () => {
-    if (!user) {
-      toast.error("Please log in or register");
-      return;
-    }
     toggleFavorite(teacher);
   };
 
@@ -39,7 +34,6 @@ export default function TeacherCard({
   };
   return (
     <li className={css.item}>
-      <Toaster position="top-center" reverseOrder={false} />
       <div className={css.card}>
         <div className={css.teacherIcon}>
           <img
@@ -127,7 +121,7 @@ export default function TeacherCard({
                   className={css.favoriteBtn}
                   onClick={handleClickFavorite}
                 >
-                  {isFavorite(teacher.id) ? (
+                  {user && isFavorite(teacher.id) ? (
                     <IoHeart size={26} className={css.heart} />
                   ) : (
                     <IoMdHeartEmpty size={26} />

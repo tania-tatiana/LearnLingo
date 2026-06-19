@@ -6,6 +6,7 @@ export default function Navigation() {
   const isActiveLink = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
   };
+
   return (
     <nav className={css.wrapper}>
       <ul className={css.list}>

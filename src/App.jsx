@@ -17,18 +17,23 @@ import { AuthContext } from "./components/AuthContext/AuthContext";
 function App() {
   const [isRegisterOrLoginOpen, setIsRegisterOrLoginOpen] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
+  const { user } = useContext(AuthContext);
   const [favorites, setFavorites] = useState(() => {
-    const stored = localStorage.getItem("favorites");
+    if (!user) return [];
+
+    const stored = localStorage.getItem(`favorites_${user.uid}`);
     return stored ? JSON.parse(stored) : [];
   });
 
-  const { user } = useContext(AuthContext);
-
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
+    if (!user) return;
+
+    localStorage.setItem(`favorites_${user.uid}`, JSON.stringify(favorites));
+  }, [favorites, user]);
 
   const toggleFavorite = (teacher) => {
+    if (!user) return;
+
     setFavorites((prev) => {
       const isExist = prev.some((item) => item.id === teacher.id);
 
@@ -41,6 +46,7 @@ function App() {
   };
 
   const isFavorite = (id) => {
+    if (!user) return false;
     return favorites.some((item) => item.id === id);
   };
   // useEffect(() => {
@@ -93,6 +99,7 @@ function App() {
   return (
     <>
       <AppBar
+        user={user}
         isRegisterOrLoginOpen={isRegisterOrLoginOpen}
         setIsRegisterOrLoginOpen={setIsRegisterOrLoginOpen}
         isClosing={isClosing}
@@ -111,18 +118,20 @@ function App() {
             />
           }
         />
-        <Route
-          path="/favorites"
-          element={
-            <ProtectedRoute>
+        <Route element={<ProtectedRoute />}>
+          <Route
+            path="/favorites"
+            element={
               <FavoritePage
+                user={user}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
                 isFavorite={isFavorite}
               />
-            </ProtectedRoute>
-          }
-        />
+            }
+          />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Login

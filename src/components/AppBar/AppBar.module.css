@@ -41,6 +41,24 @@
   color: var(--color-login);
 }
 
+.logOut {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-button);
+
+  transition: all 200ms ease;
+}
+
+.logOut:hover {
+  color: var(--color-marker);
+}
+
 .login {
   font-weight: 700;
   font-size: 16px;

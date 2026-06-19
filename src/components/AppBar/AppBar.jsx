@@ -1,18 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import Navigation from "../Navigation/Navigation";
 import css from "./AppBar.module.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../ThemesContext/ThemesContext";
+import { logOut } from "../../services/auth";
 
-export default function AppBar({ setIsRegisterOrLoginOpen }) {
+export default function AppBar({ setIsRegisterOrLoginOpen, user }) {
   const [isThemesBarOpen, setIsThemesBarOpen] = useState(false);
   const { theme, changeTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setIsThemesBarOpen(!isThemesBarOpen);
   };
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error", error);
+    }
+  };
+
   return (
     <header className={css.header}>
       <div className={css.logoWrapper}>
@@ -45,28 +57,33 @@ export default function AppBar({ setIsRegisterOrLoginOpen }) {
       </div>
       <Navigation />
       <div className={css.authWrapper}>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12.5 2.5H13.5C14.9001 2.5 15.6002 2.5 16.135 2.77248C16.6054 3.01217 16.9878 3.39462 17.2275 3.86502C17.5 4.3998 17.5 5.09987 17.5 6.5V13.5C17.5 14.9001 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9001 17.5 13.5 17.5H12.5"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M8.33333 14.1666L12.5 9.99992L8.33333 5.83325M12.5 9.99992L2.5 9.99992"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        {user && (
+          <button className={css.logOut} onClick={handleLogout}>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.5 2.5H13.5C14.9001 2.5 15.6002 2.5 16.135 2.77248C16.6054 3.01217 16.9878 3.39462 17.2275 3.86502C17.5 4.3998 17.5 5.09987 17.5 6.5V13.5C17.5 14.9001 17.5 15.6002 17.2275 16.135C16.9878 16.6054 16.6054 16.9878 16.135 17.2275C15.6002 17.5 14.9001 17.5 13.5 17.5H12.5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8.33333 14.1666L12.5 9.99992L8.33333 5.83325M12.5 9.99992L2.5 9.99992"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
+
         <button
           className={css.login}
           onClick={() => setIsRegisterOrLoginOpen("login")}
@@ -81,9 +98,7 @@ export default function AppBar({ setIsRegisterOrLoginOpen }) {
         </button>
         <div onClick={handleClick} className={css.themeWrapper}>
           {isThemesBarOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-          <div
-            className={`${css.dropdown} & ${isThemesBarOpen ? css.open : ""}`}
-          >
+          <div className={`${css.dropdown} ${isThemesBarOpen ? css.open : ""}`}>
             <button
               className={
                 theme === "theme-yellow"

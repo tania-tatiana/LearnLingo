@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { FiEyeOff } from "react-icons/fi";
 import { FiEye } from "react-icons/fi";
 import { AuthContext } from "../AuthContext/AuthContext";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const schema = Yup.object({
   email: Yup.string()
@@ -51,11 +51,11 @@ export default function Login({ isClosing, isRegisterOrLoginOpen, onClose }) {
 
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
       <div
         className={`${css.overlay} ${isRegisterOrLoginOpen === "login" && !isClosing ? css.overlayIsOpen : css.overlayIsClose}`}
         onClick={handleClose}
       >
+        {/* <Toaster position="top-right" reverseOrder={false} /> */}
         <div
           className={`${css.modal} ${isRegisterOrLoginOpen === "login" && !isClosing ? css.modalIsOpen : css.modalIsClose}`}
           onClick={(event) => event.stopPropagation()}

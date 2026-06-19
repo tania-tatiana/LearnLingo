@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import AppBar from "./components/AppBar/AppBar";
 import HomePage from "./pages/HomePage/HomePage";
@@ -10,6 +10,7 @@ import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { AuthContext } from "./components/AuthContext/AuthContext";
+import toast, { Toaster } from "react-hot-toast";
 // import { useEffect } from "react";
 // import { importTeachers } from "./utils/importTeachers";
 // import { fetchTeachers } from "./services/teacherAPI";
@@ -18,18 +19,33 @@ function App() {
   const [isRegisterOrLoginOpen, setIsRegisterOrLoginOpen] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
   const { user } = useContext(AuthContext);
-  const [favorites, setFavorites] = useState(() => {
-    if (!user) return [];
+  const location = useLocation();
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    if (!user) {
+      setFavorites([]);
+      return;
+    }
 
     const stored = localStorage.getItem(`favorites_${user.uid}`);
-    return stored ? JSON.parse(stored) : [];
-  });
+    setFavorites(stored ? JSON.parse(stored) : []);
+  }, [user]);
 
   useEffect(() => {
     if (!user) return;
 
     localStorage.setItem(`favorites_${user.uid}`, JSON.stringify(favorites));
   }, [favorites, user]);
+
+  useEffect(() => {
+    if (location.state?.fromProtected) {
+      toast.error("Please log in or register!", {
+        position: "top-center",
+        id: "auth-error",
+      });
+    }
+  }, [location.state]);
 
   const toggleFavorite = (teacher) => {
     if (!user) return;
@@ -98,6 +114,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <AppBar
         user={user}
         isRegisterOrLoginOpen={isRegisterOrLoginOpen}

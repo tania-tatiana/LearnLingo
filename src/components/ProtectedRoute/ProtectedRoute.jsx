@@ -8,7 +8,7 @@ export default function ProtectedRoute() {
   if (isLoading) return <p>Loading...</p>;
 
   if (!user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace state={{ fromProtected: true }} />;
   }
 
   return <Outlet />;

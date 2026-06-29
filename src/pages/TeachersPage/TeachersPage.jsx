@@ -23,7 +23,9 @@ export default function TeachersPage({
         const data = await fetchTeachers();
         setTeachers(data);
       } catch (error) {
-        console.error("Error fetching error:", error);
+        if (import.meta.env.DEV) {
+          console.error(error);
+        }
       }
     }
     loadTeachers();

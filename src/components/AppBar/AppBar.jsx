@@ -6,6 +6,7 @@ import css from "./AppBar.module.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../ThemesContext/ThemesContext";
 import { logOut } from "../../services/auth";
+import toast from "react-hot-toast";
 
 export default function AppBar({ setIsRegisterOrLoginOpen, user }) {
   const [isThemesBarOpen, setIsThemesBarOpen] = useState(false);
@@ -20,8 +21,8 @@ export default function AppBar({ setIsRegisterOrLoginOpen, user }) {
     try {
       await logOut();
       navigate("/");
-    } catch (error) {
-      console.error("Logout error", error);
+    } catch {
+      toast.error("Logout failed");
     }
   };
 

@@ -4,6 +4,7 @@ import * as yup from "yup";
 import "yup-phone-lite";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 
 const schema = yup.object().shape({
   reason: yup.string().required("Please select a reason"),
@@ -50,7 +51,7 @@ export default function BookingForm({ teacher, onClose }) {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    toast.success("Your request has been successfully sent!");
     reset();
     onClose();
   };

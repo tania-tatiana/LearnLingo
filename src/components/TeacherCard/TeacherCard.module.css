@@ -185,6 +185,7 @@
 .favoriteBtn {
   border: none;
   background: none;
+  color: #121417;
 }
 
 .favoriteBtn:disabled {

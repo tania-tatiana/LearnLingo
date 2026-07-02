@@ -3,6 +3,7 @@ import css from "./TeacherCard.module.css";
 import BookingForm from "../BookingForm/BookingForm";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
+import toast from "react-hot-toast";
 
 export default function TeacherCard({
   user,
@@ -15,7 +16,11 @@ export default function TeacherCard({
   const [showForm, setShowForm] = useState(false);
 
   const handleClickFavorite = () => {
-    toggleFavorite(teacher);
+    if (user) {
+      toggleFavorite(teacher);
+    } else {
+      toast.error("Please log in first.");
+    }
   };
 
   const handleClose = () => {
@@ -87,7 +92,7 @@ export default function TeacherCard({
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p>Lessons online</p>
+                  <p className={css.lessons}>Lessons online</p>
                 </div>
                 <p className={css.quantity}>
                   Lessons done: {teacher.lessons_done}

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 
-export default function Navigation() {
+export default function Navigation({ user }) {
   const isActiveLink = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
   };
@@ -20,11 +20,13 @@ export default function Navigation() {
             Teachers
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/favorites" className={isActiveLink}>
-            Favorites
-          </NavLink>
-        </li>
+        {user && (
+          <li>
+            <NavLink to="/favorites" className={isActiveLink}>
+              Favorites
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

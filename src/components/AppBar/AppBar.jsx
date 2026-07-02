@@ -56,7 +56,7 @@ export default function AppBar({ setIsRegisterOrLoginOpen, user }) {
           LearnLingo
         </NavLink>
       </div>
-      <Navigation />
+      <Navigation user={user} />
       <div className={css.authWrapper}>
         {user && (
           <button className={css.logOut} onClick={handleLogout}>
